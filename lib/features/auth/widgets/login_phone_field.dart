@@ -18,22 +18,21 @@ class LoginPhoneField extends StatelessWidget {
       },
       keyboardType: TextInputType.phone,
       textInputAction: TextInputAction.next,
-      decoration:   InputDecoration(
+      decoration: InputDecoration(
           hintText: 'Enter Phone Number',
           labelText: 'Phone',
           prefixIcon: CountryCodePicker(
-            onChanged: (country){
+            onChanged: (country) {
               print('Country ${country.code} and Code ${country.dialCode}');
             },
             padding: EdgeInsets.zero,
-            
+
             // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
             initialSelection: 'EG',
             favorite: const ['+20', 'EG'],
             showCountryOnly: false,
             showOnlyCountryWhenClosed: false,
             alignLeft: false,
-            
           )),
     );
   }

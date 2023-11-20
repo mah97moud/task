@@ -44,7 +44,7 @@ class _LoginViewState extends State<LoginView> {
               child: Column(
                 children: [
                   const WelcomMessage(),
-                 LoginPhoneField(phoneCtrl: _phoneCtrl),
+                  LoginPhoneField(phoneCtrl: _phoneCtrl),
                   const SizedBox(height: 20.0),
                   LoginPasswordField(password: _password),
                   const SizedBox(height: 40.0),
