@@ -21,7 +21,7 @@ AuthErrorModel _$AuthErrorModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AuthErrorModel {
   String get message => throw _privateConstructorUsedError;
-  Errors get errors => throw _privateConstructorUsedError;
+  ErrorsModel get errors => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,9 +35,9 @@ abstract class $AuthErrorModelCopyWith<$Res> {
           AuthErrorModel value, $Res Function(AuthErrorModel) then) =
       _$AuthErrorModelCopyWithImpl<$Res, AuthErrorModel>;
   @useResult
-  $Res call({String message, Errors errors});
+  $Res call({String message, ErrorsModel errors});
 
-  $ErrorsCopyWith<$Res> get errors;
+  $ErrorsModelCopyWith<$Res> get errors;
 }
 
 /// @nodoc
@@ -64,14 +64,14 @@ class _$AuthErrorModelCopyWithImpl<$Res, $Val extends AuthErrorModel>
       errors: null == errors
           ? _value.errors
           : errors // ignore: cast_nullable_to_non_nullable
-              as Errors,
+              as ErrorsModel,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ErrorsCopyWith<$Res> get errors {
-    return $ErrorsCopyWith<$Res>(_value.errors, (value) {
+  $ErrorsModelCopyWith<$Res> get errors {
+    return $ErrorsModelCopyWith<$Res>(_value.errors, (value) {
       return _then(_value.copyWith(errors: value) as $Val);
     });
   }
@@ -85,10 +85,10 @@ abstract class _$$AuthErrorModelImplCopyWith<$Res>
       __$$AuthErrorModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String message, Errors errors});
+  $Res call({String message, ErrorsModel errors});
 
   @override
-  $ErrorsCopyWith<$Res> get errors;
+  $ErrorsModelCopyWith<$Res> get errors;
 }
 
 /// @nodoc
@@ -113,7 +113,7 @@ class __$$AuthErrorModelImplCopyWithImpl<$Res>
       errors: null == errors
           ? _value.errors
           : errors // ignore: cast_nullable_to_non_nullable
-              as Errors,
+              as ErrorsModel,
     ));
   }
 }
@@ -121,7 +121,8 @@ class __$$AuthErrorModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AuthErrorModelImpl implements _AuthErrorModel {
-  const _$AuthErrorModelImpl({this.message = '', this.errors = const Errors()});
+  const _$AuthErrorModelImpl(
+      {this.message = '', this.errors = const ErrorsModel()});
 
   factory _$AuthErrorModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$AuthErrorModelImplFromJson(json);
@@ -131,7 +132,7 @@ class _$AuthErrorModelImpl implements _AuthErrorModel {
   final String message;
   @override
   @JsonKey()
-  final Errors errors;
+  final ErrorsModel errors;
 
   @override
   String toString() {
@@ -167,8 +168,8 @@ class _$AuthErrorModelImpl implements _AuthErrorModel {
 }
 
 abstract class _AuthErrorModel implements AuthErrorModel {
-  const factory _AuthErrorModel({final String message, final Errors errors}) =
-      _$AuthErrorModelImpl;
+  const factory _AuthErrorModel(
+      {final String message, final ErrorsModel errors}) = _$AuthErrorModelImpl;
 
   factory _AuthErrorModel.fromJson(Map<String, dynamic> json) =
       _$AuthErrorModelImpl.fromJson;
@@ -176,7 +177,7 @@ abstract class _AuthErrorModel implements AuthErrorModel {
   @override
   String get message;
   @override
-  Errors get errors;
+  ErrorsModel get errors;
   @override
   @JsonKey(ignore: true)
   _$$AuthErrorModelImplCopyWith<_$AuthErrorModelImpl> get copyWith =>

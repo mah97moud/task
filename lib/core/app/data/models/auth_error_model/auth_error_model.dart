@@ -9,7 +9,7 @@ part 'auth_error_model.g.dart';
 class AuthErrorModel with _$AuthErrorModel {
   const factory AuthErrorModel({
     @Default('') String message,
-    @Default(Errors()) Errors errors,
+    @Default(ErrorsModel()) ErrorsModel errors,
   }) = _AuthErrorModel;
 
   factory AuthErrorModel.fromJson(Map<String, dynamic> json) =>

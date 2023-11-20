@@ -14,34 +14,36 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Errors _$ErrorsFromJson(Map<String, dynamic> json) {
-  return _Errors.fromJson(json);
+ErrorsModel _$ErrorsModelFromJson(Map<String, dynamic> json) {
+  return _ErrorsModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Errors {
+mixin _$ErrorsModel {
   @JsonKey(name: 'dial_code')
   List<String> get dialCode => throw _privateConstructorUsedError;
   List<String> get phone => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ErrorsCopyWith<Errors> get copyWith => throw _privateConstructorUsedError;
+  $ErrorsModelCopyWith<ErrorsModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ErrorsCopyWith<$Res> {
-  factory $ErrorsCopyWith(Errors value, $Res Function(Errors) then) =
-      _$ErrorsCopyWithImpl<$Res, Errors>;
+abstract class $ErrorsModelCopyWith<$Res> {
+  factory $ErrorsModelCopyWith(
+          ErrorsModel value, $Res Function(ErrorsModel) then) =
+      _$ErrorsModelCopyWithImpl<$Res, ErrorsModel>;
   @useResult
   $Res call(
       {@JsonKey(name: 'dial_code') List<String> dialCode, List<String> phone});
 }
 
 /// @nodoc
-class _$ErrorsCopyWithImpl<$Res, $Val extends Errors>
-    implements $ErrorsCopyWith<$Res> {
-  _$ErrorsCopyWithImpl(this._value, this._then);
+class _$ErrorsModelCopyWithImpl<$Res, $Val extends ErrorsModel>
+    implements $ErrorsModelCopyWith<$Res> {
+  _$ErrorsModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -68,10 +70,11 @@ class _$ErrorsCopyWithImpl<$Res, $Val extends Errors>
 }
 
 /// @nodoc
-abstract class _$$ErrorsImplCopyWith<$Res> implements $ErrorsCopyWith<$Res> {
-  factory _$$ErrorsImplCopyWith(
-          _$ErrorsImpl value, $Res Function(_$ErrorsImpl) then) =
-      __$$ErrorsImplCopyWithImpl<$Res>;
+abstract class _$$ErrorsModelImplCopyWith<$Res>
+    implements $ErrorsModelCopyWith<$Res> {
+  factory _$$ErrorsModelImplCopyWith(
+          _$ErrorsModelImpl value, $Res Function(_$ErrorsModelImpl) then) =
+      __$$ErrorsModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -79,11 +82,11 @@ abstract class _$$ErrorsImplCopyWith<$Res> implements $ErrorsCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ErrorsImplCopyWithImpl<$Res>
-    extends _$ErrorsCopyWithImpl<$Res, _$ErrorsImpl>
-    implements _$$ErrorsImplCopyWith<$Res> {
-  __$$ErrorsImplCopyWithImpl(
-      _$ErrorsImpl _value, $Res Function(_$ErrorsImpl) _then)
+class __$$ErrorsModelImplCopyWithImpl<$Res>
+    extends _$ErrorsModelCopyWithImpl<$Res, _$ErrorsModelImpl>
+    implements _$$ErrorsModelImplCopyWith<$Res> {
+  __$$ErrorsModelImplCopyWithImpl(
+      _$ErrorsModelImpl _value, $Res Function(_$ErrorsModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +95,7 @@ class __$$ErrorsImplCopyWithImpl<$Res>
     Object? dialCode = null,
     Object? phone = null,
   }) {
-    return _then(_$ErrorsImpl(
+    return _then(_$ErrorsModelImpl(
       dialCode: null == dialCode
           ? _value._dialCode
           : dialCode // ignore: cast_nullable_to_non_nullable
@@ -107,15 +110,15 @@ class __$$ErrorsImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ErrorsImpl implements _Errors {
-  const _$ErrorsImpl(
+class _$ErrorsModelImpl implements _ErrorsModel {
+  const _$ErrorsModelImpl(
       {@JsonKey(name: 'dial_code') final List<String> dialCode = const [],
       final List<String> phone = const []})
       : _dialCode = dialCode,
         _phone = phone;
 
-  factory _$ErrorsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ErrorsImplFromJson(json);
+  factory _$ErrorsModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ErrorsModelImplFromJson(json);
 
   final List<String> _dialCode;
   @override
@@ -137,14 +140,14 @@ class _$ErrorsImpl implements _Errors {
 
   @override
   String toString() {
-    return 'Errors(dialCode: $dialCode, phone: $phone)';
+    return 'ErrorsModel(dialCode: $dialCode, phone: $phone)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ErrorsImpl &&
+            other is _$ErrorsModelImpl &&
             const DeepCollectionEquality().equals(other._dialCode, _dialCode) &&
             const DeepCollectionEquality().equals(other._phone, _phone));
   }
@@ -159,23 +162,24 @@ class _$ErrorsImpl implements _Errors {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorsImplCopyWith<_$ErrorsImpl> get copyWith =>
-      __$$ErrorsImplCopyWithImpl<_$ErrorsImpl>(this, _$identity);
+  _$$ErrorsModelImplCopyWith<_$ErrorsModelImpl> get copyWith =>
+      __$$ErrorsModelImplCopyWithImpl<_$ErrorsModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ErrorsImplToJson(
+    return _$$ErrorsModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _Errors implements Errors {
-  const factory _Errors(
+abstract class _ErrorsModel implements ErrorsModel {
+  const factory _ErrorsModel(
       {@JsonKey(name: 'dial_code') final List<String> dialCode,
-      final List<String> phone}) = _$ErrorsImpl;
+      final List<String> phone}) = _$ErrorsModelImpl;
 
-  factory _Errors.fromJson(Map<String, dynamic> json) = _$ErrorsImpl.fromJson;
+  factory _ErrorsModel.fromJson(Map<String, dynamic> json) =
+      _$ErrorsModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'dial_code')
@@ -184,6 +188,6 @@ abstract class _Errors implements Errors {
   List<String> get phone;
   @override
   @JsonKey(ignore: true)
-  _$$ErrorsImplCopyWith<_$ErrorsImpl> get copyWith =>
+  _$$ErrorsModelImplCopyWith<_$ErrorsModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

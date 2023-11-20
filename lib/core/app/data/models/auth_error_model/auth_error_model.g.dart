@@ -10,8 +10,8 @@ _$AuthErrorModelImpl _$$AuthErrorModelImplFromJson(Map<String, dynamic> json) =>
     _$AuthErrorModelImpl(
       message: json['message'] as String? ?? '',
       errors: json['errors'] == null
-          ? const Errors()
-          : Errors.fromJson(json['errors'] as Map<String, dynamic>),
+          ? const ErrorsModel()
+          : ErrorsModel.fromJson(json['errors'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$AuthErrorModelImplToJson(

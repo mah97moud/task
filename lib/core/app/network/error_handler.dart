@@ -1,9 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:task/core/app/data/responses/auth_error/auth_error.dart';
+import 'package:task/core/app/data/models/auth_error_model/auth_error_model.dart';
 import 'package:task/core/app/network/failure.dart';
 
 import '../../resources/strings_manager.dart';
- 
 
 class ErrorHandler implements Exception {
   ErrorHandler.handle(dynamic error) {
@@ -36,13 +35,28 @@ class ErrorHandler implements Exception {
     final responseData = response?.data;
     final responseCode = response?.statusCode;
     if (responseCode != null && responseData != null) {
-      final data = responseData ;
-      final generalError = AuthError.fromJson(data as Map<String, dynamic>);
-      final errorDescription =
-          generalError.message ?? '';
+      final data = responseData;
+      // final generalError = AuthError.fromJson(data as Map<String, dynamic>);
+      // final error = generalError.toAuthErrorModel;
+      final message =
+          data["message"] as String?;
+      // final phone =
+      //     (data["errors"]["phone"] as List).map((e) => e.toString()).toList();
+      // final dialCode = (data["errors"]["dial_code"] as List)
+      //     .map((e) => e.toString())
+      //     .toList();
+      final error = AuthErrorModel(
+        // errors: ErrorsModel(
+        //   phone: phone,
+        //   dialCode: dialCode,
+        // ),
+        message: message ?? '',
+      );
+      print('Response Data $error');
+
       return FailureDio(
         statusCode: responseCode,
-        message: errorDescription,
+        message: error.message,
       );
     }
     return DataSource.unknown.getFailure;

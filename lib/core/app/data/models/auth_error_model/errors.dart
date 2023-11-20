@@ -4,11 +4,11 @@ part 'errors.freezed.dart';
 part 'errors.g.dart';
 
 @freezed
-class Errors with _$Errors {
-  const factory Errors({
+class ErrorsModel with _$ErrorsModel {
+  const factory ErrorsModel({
     @Default([]) @JsonKey(name: 'dial_code') List<String> dialCode,
     @Default([]) List<String> phone,
-  }) = _Errors;
+  }) = _ErrorsModel;
 
-  factory Errors.fromJson(Map<String, dynamic> json) => _$ErrorsFromJson(json);
+  factory ErrorsModel.fromJson(Map<String, dynamic> json) => _$ErrorsModelFromJson(json);
 }
