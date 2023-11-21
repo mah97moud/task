@@ -20,7 +20,7 @@ class _OtpViewState extends State<OtpView> {
   @override
   void initState() {
     var otp = widget.otpCode;
-    controller = TextEditingController(text: otp !=null ? otp.toString(): '');
+    controller = TextEditingController(text: otp != null ? otp.toString() : '');
     focusNode = FocusNode();
     super.initState();
   }
@@ -49,8 +49,9 @@ class _OtpViewState extends State<OtpView> {
             style: StylesManager.textStyle20,
             textAlign: TextAlign.center,
           ),
-
-          const SizedBox(height: 20.0,),
+          const SizedBox(
+            height: 20.0,
+          ),
           SizedBox(
             height: 68,
             child: Pinput(
@@ -74,8 +75,9 @@ class _OtpViewState extends State<OtpView> {
               ),
             ),
           ),
-          const SizedBox(height: 40.0,),
-
+          const SizedBox(
+            height: 40.0,
+          ),
           const VerifyButton(),
         ],
       ),

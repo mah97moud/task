@@ -10,5 +10,6 @@ class ErrorsModel with _$ErrorsModel {
     @Default([]) List<String> phone,
   }) = _ErrorsModel;
 
-  factory ErrorsModel.fromJson(Map<String, dynamic> json) => _$ErrorsModelFromJson(json);
+  factory ErrorsModel.fromJson(Map<String, dynamic> json) =>
+      _$ErrorsModelFromJson(json);
 }

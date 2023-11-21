@@ -47,8 +47,11 @@ class AppRouter {
             path: RoutesNames.otp,
             name: RoutesNames.otp,
             builder: (context, state) {
-              final otpCode = int.tryParse(state.uri.queryParameters['otpCode'] ?? '');
-              return   OtpView(otpCode: otpCode,);
+              final otpCode =
+                  int.tryParse(state.uri.queryParameters['otpCode'] ?? '');
+              return OtpView(
+                otpCode: otpCode,
+              );
             },
           ),
         ],

@@ -41,9 +41,12 @@ Future<void> initAppModule() async {
     () => AppServicesClient(dio),
   );
   di.registerFactory<AuthRepository>(
-    () => AuthRepositoryImpl(networkInfo: di(), appServicesClient: di(),),
+    () => AuthRepositoryImpl(
+      networkInfo: di(),
+      appServicesClient: di(),
+    ),
   );
-  
+
   di.registerFactory<AuthRepository>(
     () => AuthRepositoryImpl(
       appServicesClient: di(),

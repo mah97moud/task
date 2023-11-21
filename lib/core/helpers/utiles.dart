@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:cookie_jar/cookie_jar.dart';
@@ -6,9 +5,8 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:path_provider/path_provider.dart';
 
 class Utils {
-
   Utils._();
-   static Future<String> get deviceId async {
+  static Future<String> get deviceId async {
     final deviceInfoPlugin = DeviceInfoPlugin();
     if (Platform.isAndroid) {
       final deviceInfo = await deviceInfoPlugin.androidInfo;
@@ -21,13 +19,12 @@ class Utils {
     }
   }
 
- static Future<PersistCookieJar> prepareJar() async {
-  final Directory appDocDir = await getApplicationDocumentsDirectory();
-  final String appDocPath = appDocDir.path;
-   return PersistCookieJar(
-    ignoreExpires: true,
-    storage: FileStorage("$appDocPath/.cookies/"),
-  );
-
-}
+  static Future<PersistCookieJar> prepareJar() async {
+    final Directory appDocDir = await getApplicationDocumentsDirectory();
+    final String appDocPath = appDocDir.path;
+    return PersistCookieJar(
+      ignoreExpires: true,
+      storage: FileStorage("$appDocPath/.cookies/"),
+    );
+  }
 }

@@ -1,3 +1,1 @@
-
-
-String fcmToken ='';
+String fcmToken = '';

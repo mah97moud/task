@@ -1,6 +1,9 @@
 import 'package:task/core/app/data/dto/to_register_model.dart';
+import 'package:task/core/app/data/dto/to_verify_model.dart';
 import 'package:task/core/app/data/models/register_model/register_model.dart';
+import 'package:task/core/app/data/models/verify_model/verify_model.dart';
 import 'package:task/core/app/data/requests/register_request.dart';
+import 'package:task/core/app/data/requests/verfiy_request.dart';
 import 'package:task/core/app/network/app_service_client.dart';
 import 'package:task/core/app/network/network_info.dart';
 
@@ -29,15 +32,34 @@ class AuthRepositoryImpl implements AuthRepository {
         final response = await _appServicesClient.register(registerRequest);
         final registerModel = response.toRegisterModel;
 
-   
-          return Success(registerModel);
- 
- 
+        return Success(registerModel);
       } catch (e) {
         return Failure(ErrorHandler.handle(e).toMessage());
       }
     } else {
-      return Failure(NoIternetConnectionException(AppStrings.noInternetConnection).message);
+      return Failure(
+        NoInternetConnectionException(AppStrings.noInternetConnection).message,
+      );
+    }
+  }
+
+  @override
+  Future<Result<VerifyModel>> verify(VerifyRequest verifyRequest) async {
+    final isConnected = await _networkInfo.isConnected;
+
+    if (isConnected) {
+      try {
+        final response = await _appServicesClient.verify(verifyRequest);
+        final registerModel = response.toVerifyModel;
+
+        return Success(registerModel);
+      } catch (e) {
+        return Failure(ErrorHandler.handle(e).toMessage());
+      }
+    } else {
+      return Failure(
+        NoInternetConnectionException(AppStrings.noInternetConnection).message,
+      );
     }
   }
 }

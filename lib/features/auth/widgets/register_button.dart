@@ -30,12 +30,12 @@ class RegisterButton extends StatelessWidget {
                   showSnackBar(
                     context,
                     message: "${registerStatus.registerModel.message}\n"
-                    "Your otp is $otp",
+                        "Your otp is $otp",
                   );
                   context.pushNamed(
-                      RoutesNames.otp,
-                      queryParameters: {'otpCode': otp.toString()},
-                    );
+                    RoutesNames.otp,
+                    queryParameters: {'otpCode': otp.toString()},
+                  );
                 } else if (registerStatus is RegisterFailure) {
                   showSnackBar(context, message: registerStatus.message);
                 }
@@ -45,7 +45,6 @@ class RegisterButton extends StatelessWidget {
                   if (formKey.currentState!.validate()) {
                     final registerCubit = context.read<RegisterCubit>();
                     registerCubit.register();
-                    
                   }
                 },
                 style: ElevatedButton.styleFrom(

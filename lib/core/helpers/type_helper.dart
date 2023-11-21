@@ -23,7 +23,7 @@ final class Failure<s> extends Result<s> {
 }
 
 extension ResultExtension<S> on Result<S> {
- dynamic Function(dynamic) fold(
+  dynamic Function(dynamic) fold(
     Function(S value) onSuccess,
     Function(String message) onFailure,
   ) {

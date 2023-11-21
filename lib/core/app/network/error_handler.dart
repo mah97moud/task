@@ -38,8 +38,7 @@ class ErrorHandler implements Exception {
       final data = responseData;
       // final generalError = AuthError.fromJson(data as Map<String, dynamic>);
       // final error = generalError.toAuthErrorModel;
-      final message =
-          data["message"] as String?;
+      final message = data["message"] as String?;
       // final phone =
       //     (data["errors"]["phone"] as List).map((e) => e.toString()).toList();
       // final dialCode = (data["errors"]["dial_code"] as List)
@@ -68,8 +67,8 @@ extension ErrorHandlerEx on ErrorHandler {
   int toCode() => failure.statusCode;
 }
 
-class NoIternetConnectionException implements Exception {
-  NoIternetConnectionException(this.message);
+class NoInternetConnectionException implements Exception {
+  NoInternetConnectionException(this.message);
 
   final String message;
 }

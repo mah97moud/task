@@ -13,7 +13,6 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
-
   @override
   void initState() {
     super.initState();
@@ -33,8 +32,7 @@ class _RegisterViewState extends State<RegisterView> {
       child: const Scaffold(
         body: Padding(
           padding: EdgeInsets.all(20.0),
-          child: RegisterViewBody(
-          ),
+          child: RegisterViewBody(),
         ),
       ),
     );
