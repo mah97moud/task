@@ -34,7 +34,10 @@ class RegisterButton extends StatelessWidget {
                   );
                   context.pushNamed(
                     RoutesNames.otp,
-                    queryParameters: {'otpCode': otp.toString()},
+                    queryParameters: {
+                      'otpCode': otp.toString(),
+                      'phone': state.phone.toString(),
+                    },
                   );
                 } else if (registerStatus is RegisterFailure) {
                   showSnackBar(context, message: registerStatus.message);

@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:pinput/pinput.dart';
-import 'package:task/core/helpers/color_manager.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:task/core/app/di.dart';
 import 'package:task/core/helpers/styles_manager.dart';
+import 'package:task/features/auth/widgets/otp_pin.dart';
 import 'package:task/features/auth/widgets/verify_button.dart';
 
+import 'managers/verify_cubit/verify_cubit.dart';
+
 class OtpView extends StatefulWidget {
-  const OtpView({Key? key, required this.otpCode}) : super(key: key);
+  const OtpView({Key? key, required this.otpCode, this.phone})
+      : super(key: key);
 
   final int? otpCode;
+  final int? phone;
 
   @override
   State<OtpView> createState() => _OtpViewState();
@@ -34,52 +39,37 @@ class _OtpViewState extends State<OtpView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('OTP'),
+    return BlocProvider(
+      create: (context) => VerifyCubit(
+        di(),
+        otp: widget.otpCode.toString(),
+        phone: widget.phone,
       ),
-      body: Column(
-        children: [
-          const SizedBox(
-            width: double.infinity,
-            height: 20.0,
-          ),
-          const Text(
-            'Please put otp code',
-            style: StylesManager.textStyle20,
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(
-            height: 20.0,
-          ),
-          SizedBox(
-            height: 68,
-            child: Pinput(
-              length: 4,
-              controller: controller,
-              focusNode: focusNode,
-              defaultPinTheme: StylesManager.defaultPinTheme,
-              onCompleted: (pin) {},
-              focusedPinTheme: StylesManager.defaultPinTheme.copyWith(
-                height: 68,
-                width: 64,
-                decoration: StylesManager.defaultPinTheme.decoration!.copyWith(
-                  border: Border.all(color: ColorMananger.primary),
-                ),
-              ),
-              errorPinTheme: StylesManager.defaultPinTheme.copyWith(
-                decoration: BoxDecoration(
-                  color: ColorMananger.redColor,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('OTP'),
+        ),
+        body: Column(
+          children: [
+            const SizedBox(
+              width: double.infinity,
+              height: 20.0,
             ),
-          ),
-          const SizedBox(
-            height: 40.0,
-          ),
-          const VerifyButton(),
-        ],
+            const Text(
+              'Please put otp code',
+              style: StylesManager.textStyle20,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            OtpPin(controller: controller, focusNode: focusNode),
+            const SizedBox(
+              height: 40.0,
+            ),
+            const VerifyButton(),
+          ],
+        ),
       ),
     );
   }

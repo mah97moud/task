@@ -54,12 +54,13 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(state.copyWith(registerStatus: const RegisterSending()));
 
     final result = await _authRepository.register(request);
-    //Todo: otp number is 4391
+    
 
     result.fold(
       (value) => emit(
         RegisterState(
-          registerStatus: RegisterSuccess(registerModel: value),
+          registerStatus: RegisterSuccess(registerModel: value,),
+          phone: state.phone,
         ),
       ),
       (message) => emit(
