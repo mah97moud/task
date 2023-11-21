@@ -10,7 +10,7 @@ class AuthModel with _$AuthModel {
     @Default(200) int status,
     @Default(0) int otp,
   }) = _AuthModel;
- 
+
   factory AuthModel.fromJson(Map<String, dynamic> json) =>
       _$AuthModelFromJson(json);
 }

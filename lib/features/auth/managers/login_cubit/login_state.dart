@@ -23,7 +23,7 @@ class LoginState extends Equatable {
   }
 
   @override
-  List<Object> get props => [phone, loginStatus,dialCode];
+  List<Object> get props => [phone, loginStatus, dialCode];
 }
 
 sealed class LoginStatus extends Equatable {

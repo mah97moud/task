@@ -13,5 +13,5 @@ abstract class AuthRepository {
   Future<Result<VerifyModel>> verify(
     VerifyRequest verifyRequest,
   );
-  Future<Result<AuthModel>> login(  LoginRequest loginRequest);
+  Future<Result<AuthModel>> login(LoginRequest loginRequest);
 }

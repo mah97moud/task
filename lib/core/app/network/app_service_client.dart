@@ -5,6 +5,7 @@ import 'package:task/core/app/data/requests/verfiy_request.dart';
 
 import '../data/requests/register_request.dart';
 import '../data/responses/auth_response.dart';
+import '../data/responses/me_response/me_response.dart';
 import '../data/responses/verify_response.dart';
 import 'end_point.dart';
 
@@ -30,4 +31,9 @@ abstract class AppServicesClient {
   Future<VerifyResponse> verify(
     @Body() VerifyRequest verifyRequest,
   );
+
+  @GET(EndPoints.me)
+  Future<MeResponse> me({
+    @Header('X-DID') required String identity,
+  });
 }

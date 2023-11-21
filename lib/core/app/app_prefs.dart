@@ -3,8 +3,9 @@ import 'cache_helper.dart';
 const String prefsKeyLanguage = 'prefsKeyLanguage';
 const String prefsKeyDeviceId = 'prefsKeyDeviceId';
 const String prefsKeyToken = 'prefsKeyToken';
- 
+
 String? token;
+
 class AppPreferences {
   AppPreferences({
     required CacheImpl cacheImpl,

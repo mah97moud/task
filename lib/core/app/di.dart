@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -17,6 +18,7 @@ String identity = 'Unknown';
 Future<void> initAppModule() async {
   final sharedPreferences = await SharedPreferences.getInstance();
   identity = await Utils.deviceId;
+  debugPrint('My Device DI => $identity');
 
   di.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
 
@@ -28,6 +30,7 @@ Future<void> initAppModule() async {
   );
   final appPrefs = di<AppPreferences>();
   token = await appPrefs.getToken;
+  debugPrint('My access Token => $token');
 
   di.registerLazySingleton<NetworkInfo>(
     () => NetworkInfoImpl(
