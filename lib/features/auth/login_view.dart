@@ -43,7 +43,7 @@ class _LoginViewState extends State<LoginView> {
             Form(
               child: Column(
                 children: [
-                  const WelcomMessage(),
+                  const WelcomeMessage(),
                   LoginPhoneField(phoneCtrl: _phoneCtrl),
                   const SizedBox(height: 20.0),
                   LoginPasswordField(password: _password),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:task/core/routes/routes_names.dart';
 
 import '../managers/verify_cubit/verify_cubit.dart';
 
@@ -21,6 +23,7 @@ class VerifyButton extends StatelessWidget {
               context,
               message: "${state.verifyModel.message} ",
             );
+            context.goNamed(RoutesNames.home);
           } else if (state is VerifyFailure) {
             showSnackBar(context, message: state.message);
           }

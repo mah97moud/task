@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:task/core/helpers/styles_manager.dart';
 
-class WelcomMessage extends StatelessWidget {
-  const WelcomMessage({
+class WelcomeMessage extends StatelessWidget {
+  const WelcomeMessage({
     super.key,
   });
 
