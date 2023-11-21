@@ -5,8 +5,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:task/core/app/app_prefs.dart';
 import 'package:task/core/app/network/app_service_client.dart';
 import 'package:task/features/auth/repository/auth_repository_impl.dart';
+import 'package:task/features/home/repository/home_repository_impl.dart';
 
 import '../../features/auth/repository/auth_repository.dart';
+import '../../features/home/repository/home_repository.dart';
 import '../helpers/utiles.dart';
 import 'cache_helper.dart';
 import 'network/dio_factory.dart';
@@ -51,6 +53,12 @@ Future<void> initAppModule() async {
   di.registerFactory<AuthRepository>(
     () => AuthRepositoryImpl(
       appPreferences: di(),
+      networkInfo: di(),
+      appServicesClient: di(),
+    ),
+  );
+  di.registerFactory<HomeRepository>(
+    () => HomeRepositoryImpl(
       networkInfo: di(),
       appServicesClient: di(),
     ),

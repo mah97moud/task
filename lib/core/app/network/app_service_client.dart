@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:task/core/app/data/requests/login_request.dart';
 import 'package:task/core/app/data/requests/verfiy_request.dart';
+import 'package:task/core/app/data/responses/product_response/product_response.dart';
 
 import '../data/requests/register_request.dart';
 import '../data/responses/auth_response.dart';
@@ -28,12 +29,17 @@ abstract class AppServicesClient {
   Future<AuthResponse> login(@Body() LoginRequest loginRequest);
 
   @POST(EndPoints.verify)
-  Future<VerifyResponse> verify(
+  Future<VerifyResponse> verify( 
     @Body() VerifyRequest verifyRequest,
   );
 
   @GET(EndPoints.me)
   Future<MeResponse> me({
+    @Header('X-DID') required String identity,
+  });
+
+  @GET(EndPoints.products)
+  Future<ProductResponse> products({
     @Header('X-DID') required String identity,
   });
 }

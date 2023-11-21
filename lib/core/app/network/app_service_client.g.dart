@@ -113,7 +113,7 @@ class _AppServicesClient implements AppServicesClient {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'X-DID': identity};
     _headers.removeWhere((k, v) => v == null);
-    const Map<String, dynamic>? _data = null;
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<MeResponse>(Options(
       method: 'GET',
@@ -132,6 +132,34 @@ class _AppServicesClient implements AppServicesClient {
               baseUrl,
             ))));
     final value = MeResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ProductResponse> products({required String identity}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'X-DID': identity};
+    _headers.removeWhere((k, v) => v == null);
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ProductResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'products',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ProductResponse.fromJson(_result.data!);
     return value;
   }
 

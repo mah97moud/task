@@ -5,4 +5,5 @@ class EndPoints {
   static const verify = 'auth/verify';
   static const login = 'auth/login';
   static const me = 'account/me';
+  static const products = 'products';
 }
