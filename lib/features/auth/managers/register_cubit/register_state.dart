@@ -59,7 +59,7 @@ final class RegisterSending extends RegisterStatus {
 }
 
 final class RegisterSuccess extends RegisterStatus {
-  final RegisterModel registerModel;
+  final AuthModel registerModel;
 
   const RegisterSuccess({required this.registerModel});
 

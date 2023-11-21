@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:task/core/routes/routes_names.dart';
 import 'package:task/features/auth/widgets/login_button.dart';
-import 'package:task/features/auth/widgets/login_password_field.dart';
 import 'package:task/features/auth/widgets/login_phone_field.dart';
-import 'package:task/features/auth/widgets/welcom_message.dart';
+import 'package:task/features/auth/widgets/welcome_message.dart';
+
+import '../../core/app/di.dart';
+import 'managers/login_cubit/login_cubit.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -14,53 +17,52 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  late TextEditingController _phoneCtrl;
-  late TextEditingController _password;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
-    _phoneCtrl = TextEditingController();
-    _password = TextEditingController();
   }
 
   @override
   void dispose() {
-    _phoneCtrl.dispose();
-    _password.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Spacer(),
-            Form(
-              child: Column(
-                children: [
-                  const WelcomeMessage(),
-                  LoginPhoneField(phoneCtrl: _phoneCtrl),
-                  const SizedBox(height: 20.0),
-                  LoginPasswordField(password: _password),
-                  const SizedBox(height: 40.0),
-                  const LoginButton(),
-                ],
+    return BlocProvider(
+      create: (context) => LoginCubit(di()),
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Spacer(),
+              Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    const WelcomeMessage(),
+                    const LoginPhoneField(),
+                    const SizedBox(height: 40.0),
+                    LoginButton(
+                      formKey: _formKey,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const Spacer(),
-            const Text('Don\'t have an account?'),
-            TextButton(
-              onPressed: () {
-                context.pushNamed(RoutesNames.register);
-              },
-              child: const Text('Register'),
-            ),
-          ],
+              const Spacer(),
+              const Text('Don\'t have an account?'),
+              TextButton(
+                onPressed: () {
+                  context.pushNamed(RoutesNames.register);
+                },
+                child: const Text('Register'),
+              ),
+            ],
+          ),
         ),
       ),
     );

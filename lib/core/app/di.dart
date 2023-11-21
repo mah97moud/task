@@ -6,14 +6,17 @@ import 'package:task/core/app/network/app_service_client.dart';
 import 'package:task/features/auth/repository/auth_repository_impl.dart';
 
 import '../../features/auth/repository/auth_repository.dart';
+import '../helpers/utiles.dart';
 import 'cache_helper.dart';
 import 'network/dio_factory.dart';
 import 'network/network_info.dart';
 
 final di = GetIt.instance..allowReassignment = true;
 
+String identity = 'Unknown';
 Future<void> initAppModule() async {
   final sharedPreferences = await SharedPreferences.getInstance();
+    identity = await Utils.deviceId;
 
   di.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
 

@@ -12,7 +12,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  initAppModule();
+  await initAppModule();
   LocalNotificationService.initialize();
   runApp(const MyApp());
 }

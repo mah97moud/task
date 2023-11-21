@@ -49,7 +49,8 @@ class AppRouter {
             builder: (context, state) {
               final otpCode =
                   int.tryParse(state.uri.queryParameters['otpCode'] ?? '');
-                 final phone = int.tryParse(state.uri.queryParameters['phone'] ?? '');
+              final phone =
+                  int.tryParse(state.uri.queryParameters['phone'] ?? '');
               return OtpView(
                 otpCode: otpCode,
                 phone: phone,

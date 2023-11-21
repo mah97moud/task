@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:task/core/app/data/models/register_model/register_model.dart';
 import 'package:task/core/app/data/requests/register_request.dart';
 import 'package:task/core/helpers/type_helper.dart';
 import 'package:task/features/auth/repository/auth_repository.dart';
 
+import '../../../../core/app/data/models/auth_model/auth_model.dart';
 import '../../../../core/helpers/utiles.dart';
 
 part 'register_state.dart';
@@ -54,12 +54,13 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(state.copyWith(registerStatus: const RegisterSending()));
 
     final result = await _authRepository.register(request);
-    
 
     result.fold(
       (value) => emit(
         RegisterState(
-          registerStatus: RegisterSuccess(registerModel: value,),
+          registerStatus: RegisterSuccess(
+            registerModel: value,
+          ),
           phone: state.phone,
         ),
       ),

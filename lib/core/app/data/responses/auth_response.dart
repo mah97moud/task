@@ -1,14 +1,14 @@
 import 'package:equatable/equatable.dart';
 
-class RegisterResponse extends Equatable {
+class AuthResponse extends Equatable {
   final String? message;
   final int? status;
   final int? otp;
 
-  const RegisterResponse({this.message, this.status, this.otp});
+  const AuthResponse({this.message, this.status, this.otp});
 
-  factory RegisterResponse.fromJson(Map<String, dynamic> json) {
-    return RegisterResponse(
+  factory AuthResponse.fromJson(Map<String, dynamic> json) {
+    return AuthResponse(
       message: json['message'] as String?,
       status: json['status'] as int?,
       otp: json['otp'] as int?,
