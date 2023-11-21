@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "175046592294",
+    "project_id": "my-task-for-jop",
+    "storage_bucket": "my-task-for-jop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175046592294:android:d4d794956a92857e62e3e7",
+        "android_client_info": {
+          "package_name": "com.example.task"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIBqn7YH3W2t4-ypFCd_hNdXASEMnwtd8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

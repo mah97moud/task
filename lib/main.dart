@@ -1,11 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:task/core/app/di.dart';
 import 'package:task/core/helpers/color_manager.dart';
 import 'package:task/core/routes/app_router.dart';
+import 'package:task/firebase_options.dart';
+
+import 'core/helpers/firebase_notification.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   initAppModule();
+  LocalNotificationService.initialize();
   runApp(const MyApp());
 }
 

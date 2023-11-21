@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:task/core/helpers/utiles.dart';
 
 import '../app_prefs.dart';
 
@@ -23,6 +25,7 @@ class DioFactory {
 
   Future<Dio> getDio() async {
     final dio = Dio();
+    final jar = await Utils.prepareJar();
 
     // final String language = await _appPreferences.getAppLanguage;
     final String? token = await _appPreferences.getToken;
@@ -38,6 +41,8 @@ class DioFactory {
     dio.options = BaseOptions(
       headers: headers,
     );
+
+    dio.interceptors.add(CookieManager(jar));
 
     if (!kReleaseMode) {
       dio.interceptors.add(
