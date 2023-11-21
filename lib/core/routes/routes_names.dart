@@ -5,4 +5,5 @@ class RoutesNames {
   static const auth = 'auth';
   static const register = 'register';
   static const login = 'login';
+  static const otp = 'otp';
 }

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:task/core/app/data/requests/register_request.dart';
-import 'package:task/features/auth/repository/auth_repostiory.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../core/app/di.dart';
+import '../../../core/routes/routes_names.dart';
 
 class RegisterButton extends StatelessWidget {
   const RegisterButton({
@@ -18,15 +17,10 @@ class RegisterButton extends StatelessWidget {
           Expanded(
             child: ElevatedButton(
               onPressed: () async {
-                final repo = di<AuthRepository>();
-                final register = await repo.register(const RegisterRequest(
-                  dialCode: 20,
-                  identity: "12",
-                  firstName: "test",
-                  lastName: "1",
-                  phone: 1012345678,
-                ));
-                print('register');
+                context.pushNamed(
+                  RoutesNames.otp,
+                  queryParameters: {'otpCode': ''},
+                );
               },
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(

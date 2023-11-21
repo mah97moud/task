@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:task/core/routes/routes_names.dart';
 import 'package:task/features/auth/login_view.dart';
+import 'package:task/features/auth/otp_view.dart';
 import 'package:task/features/auth/register_view.dart';
 import 'package:task/features/home/home_view.dart';
 
@@ -40,6 +41,14 @@ class AppRouter {
             name: RoutesNames.register,
             builder: (context, state) {
               return const RegisterView();
+            },
+          ),
+          GoRoute(
+            path: RoutesNames.otp,
+            name: RoutesNames.otp,
+            builder: (context, state) {
+              final otpCode = int.tryParse(state.uri.queryParameters['otpCode'] ?? '');
+              return   OtpView(otpCode: otpCode,);
             },
           ),
         ],

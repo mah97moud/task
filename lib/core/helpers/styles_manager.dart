@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pinput/pinput.dart';
+import 'package:task/core/helpers/color_manager.dart';
 
 class StylesManager {
   StylesManager._();
@@ -30,4 +32,15 @@ class StylesManager {
   static const TextStyle textStyle24 = TextStyle(
     fontSize: 24.0,
   );
+
+      static PinTheme defaultPinTheme = PinTheme(
+      width: 56,
+      height: 60,
+      textStyle: textStyle22,
+      decoration: BoxDecoration(
+        color: ColorMananger.fillColor,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.transparent),
+      ),
+    );
 }
