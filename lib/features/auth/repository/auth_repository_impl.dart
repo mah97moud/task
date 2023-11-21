@@ -7,7 +7,7 @@ import 'package:task/core/app/network/network_info.dart';
 import '../../../core/app/network/error_handler.dart';
 import '../../../core/helpers/type_helper.dart';
 import '../../../core/resources/strings_manager.dart';
-import 'auth_repostiory.dart';
+import 'auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AppServicesClient _appServicesClient;

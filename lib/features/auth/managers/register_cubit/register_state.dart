@@ -7,36 +7,27 @@ class RegisterState extends Equatable {
     this.lastName = '',
     this.phone = 0,
     this.dialCode = 20,
-    this.password = '',
-    this.confirmPassword = '',
   });
 
   final String firstName;
   final String lastName;
   final int phone;
   final int dialCode;
-  final String password;
-  final String confirmPassword;
   final RegisterStatus registerStatus;
 
   RegisterState copyWith({
-
-   String? firstName,
-   String? lastName,
-   int? phone,
-   int? dialCode,
-   String? password,
-   String? confirmPassword,
-   RegisterStatus? registerStatus,
-  }){
+    String? firstName,
+    String? lastName,
+    int? phone,
+    int? dialCode,
+    RegisterStatus? registerStatus,
+  }) {
     return RegisterState(
-      registerStatus: registerStatus?? const RegisterInitial(),
-      firstName: firstName?? this.firstName,
+      registerStatus: registerStatus ?? const RegisterInitial(),
+      firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,
       phone: phone ?? this.phone,
       dialCode: dialCode ?? this.dialCode,
-      password: password?? this.password,
-      confirmPassword: confirmPassword ?? this.confirmPassword,
     );
   }
 
@@ -46,8 +37,6 @@ class RegisterState extends Equatable {
         lastName,
         phone,
         dialCode,
-        password,
-        confirmPassword,
         registerStatus,
       ];
 }

@@ -15,7 +15,6 @@ abstract class AppServicesClient {
   }) = _AppServicesClient;
 
   @POST(EndPoints.register)
-  Future<RegisterResponse> register(
-    @Body() RegisterRequest registerRequest,
-  );
+  Future<RegisterResponse> register(@Body() RegisterRequest registerRequest,
+      {@Query('type') String type = 'individual'});
 }

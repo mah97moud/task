@@ -3,9 +3,9 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:task/core/app/app_prefs.dart';
 import 'package:task/core/app/network/app_service_client.dart';
-import 'package:task/features/auth/repository/auth_repostiory_impl.dart';
+import 'package:task/features/auth/repository/auth_repository_impl.dart';
 
-import '../../features/auth/repository/auth_repostiory.dart';
+import '../../features/auth/repository/auth_repository.dart';
 import 'cache_helper.dart';
 import 'network/dio_factory.dart';
 import 'network/network_info.dart';

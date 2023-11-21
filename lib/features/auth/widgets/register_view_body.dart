@@ -3,17 +3,14 @@ import 'package:go_router/go_router.dart';
 import 'package:task/core/helpers/styles_manager.dart';
 import 'package:task/core/routes/routes_names.dart';
 import 'package:task/features/auth/widgets/register_button.dart';
-import 'package:task/features/auth/widgets/register_conf_password_field.dart';
 import 'package:task/features/auth/widgets/register_first_name_field.dart';
 import 'package:task/features/auth/widgets/register_last_name_field.dart';
-import 'package:task/features/auth/widgets/register_password_field.dart';
 import 'package:task/features/auth/widgets/register_phone_field.dart';
 
 class RegisterViewBody extends StatefulWidget {
   const RegisterViewBody({
     super.key,
-  }) ;
-
+  });
 
   @override
   State<RegisterViewBody> createState() => _RegisterViewBodyState();
@@ -49,10 +46,6 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                   const RegisterLastNameField(),
                   const SizedBox(height: 20.0),
                   const RegisterPhoneField(),
-                  const SizedBox(height: 20.0),
-                  const RegisterPasswordField(),
-                  const SizedBox(height: 20.0),
-                  const RegisterConfPasswordField(),
                   const SizedBox(height: 40.0),
                   RegisterButton(
                     formKey: _formKey,

@@ -21,9 +21,12 @@ class _AppServicesClient implements AppServicesClient {
   String? baseUrl;
 
   @override
-  Future<RegisterResponse> register(RegisterRequest registerRequest) async {
+  Future<RegisterResponse> register(
+    RegisterRequest registerRequest, {
+    String type = 'individual',
+  }) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'type': type};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(registerRequest.toJson());

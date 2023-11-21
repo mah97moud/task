@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task/features/auth/managers/register_cubit/register_cubit.dart';
 
-
 class RegisterPhoneField extends StatefulWidget {
   const RegisterPhoneField({
     super.key,
@@ -51,15 +50,18 @@ class _RegisterPhoneFieldState extends State<RegisterPhoneField> {
           }
         }
 
-        return null; 
+        return null;
       },
-      autovalidateMode: AutovalidateMode.onUserInteraction, 
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
           hintText: 'Enter Phone Number',
           labelText: 'Phone',
           prefixIcon: CountryCodePicker(
             onChanged: (country) {
+              final dialCode = country.dialCode;
               print('Country ${country.code} and Code ${country.dialCode}');
+              final registerCubit = context.read<RegisterCubit>();
+              registerCubit.dialCodeChanged(dialCode);
             },
             padding: EdgeInsets.zero,
 
