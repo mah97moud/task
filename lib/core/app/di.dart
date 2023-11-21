@@ -16,7 +16,7 @@ final di = GetIt.instance..allowReassignment = true;
 String identity = 'Unknown';
 Future<void> initAppModule() async {
   final sharedPreferences = await SharedPreferences.getInstance();
-    identity = await Utils.deviceId;
+  identity = await Utils.deviceId;
 
   di.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
 
@@ -26,6 +26,8 @@ Future<void> initAppModule() async {
   di.registerLazySingleton<AppPreferences>(
     () => AppPreferences(cacheImpl: di()),
   );
+  final appPrefs = di<AppPreferences>();
+  token = await appPrefs.getToken;
 
   di.registerLazySingleton<NetworkInfo>(
     () => NetworkInfoImpl(
@@ -45,6 +47,7 @@ Future<void> initAppModule() async {
   );
   di.registerFactory<AuthRepository>(
     () => AuthRepositoryImpl(
+      appPreferences: di(),
       networkInfo: di(),
       appServicesClient: di(),
     ),

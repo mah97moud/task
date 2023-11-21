@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:task/core/app/app_prefs.dart';
 import 'package:task/core/routes/routes_names.dart';
 import 'package:task/features/auth/login_view.dart';
 import 'package:task/features/auth/otp_view.dart';
@@ -20,7 +21,8 @@ class AppRouter {
   final router = GoRouter(
     debugLogDiagnostics: true,
     navigatorKey: _rootNavigatorKey,
-    initialLocation: '/${RoutesNames.login}',
+    initialLocation:
+        token != null && token!.isNotEmpty ? '/' : '/${RoutesNames.login}',
     routes: [
       GoRoute(
         path: '/',

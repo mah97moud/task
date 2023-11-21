@@ -1,3 +1,4 @@
+import 'package:task/core/app/app_prefs.dart';
 import 'package:task/core/app/data/dto/to_register_model.dart';
 import 'package:task/core/app/data/dto/to_verify_model.dart';
 import 'package:task/core/app/data/models/verify_model/verify_model.dart';
@@ -16,11 +17,14 @@ import 'auth_repository.dart';
 class AuthRepositoryImpl implements AuthRepository {
   final AppServicesClient _appServicesClient;
   final NetworkInfo _networkInfo;
+  final AppPreferences _appPreferences;
 
   AuthRepositoryImpl({
+    required AppPreferences appPreferences,
     required NetworkInfo networkInfo,
     required AppServicesClient appServicesClient,
-  })  : _appServicesClient = appServicesClient,
+  })  : _appPreferences = appPreferences,
+        _appServicesClient = appServicesClient,
         _networkInfo = networkInfo;
 
   @override
@@ -70,9 +74,11 @@ class AuthRepositoryImpl implements AuthRepository {
     if (isConnected) {
       try {
         final response = await _appServicesClient.verify(verifyRequest);
-        final registerModel = response.toVerifyModel;
+        final verify = response.toVerifyModel;
+        await _appPreferences.saveToken(verify.accessToken ?? '');
+        token = await _appPreferences.getToken;
 
-        return Success(registerModel);
+        return Success(verify);
       } catch (e) {
         return Failure(ErrorHandler.handle(e).toMessage());
       }
