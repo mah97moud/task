@@ -5,6 +5,7 @@ import 'package:task/core/app/data/models/verify_model/verify_model.dart';
 import 'package:task/core/app/data/requests/login_request.dart';
 import 'package:task/core/app/data/requests/register_request.dart';
 import 'package:task/core/app/data/requests/verfiy_request.dart';
+import 'package:task/core/app/di.dart';
 import 'package:task/core/app/network/app_service_client.dart';
 import 'package:task/core/app/network/network_info.dart';
 
@@ -76,7 +77,7 @@ class AuthRepositoryImpl implements AuthRepository {
         final response = await _appServicesClient.verify(verifyRequest);
         final verify = response.toVerifyModel;
         await _appPreferences.saveToken(verify.accessToken ?? '');
-        token = await _appPreferences.getToken;
+        await initAppModule();
 
         return Success(verify);
       } catch (e) {
